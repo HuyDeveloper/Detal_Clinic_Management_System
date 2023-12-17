@@ -5,8 +5,8 @@ const { ConnectionPool, Request } = pkg;
 // Thông tin kết nối đến cơ sở dữ liệu
 const dbConfig = {
   user: 'sa',
-  password: 'svcntt',
-  server: 'LAPTOP-QH5VKUEG',
+  password: 'suyoung02',
+  server: 'LAPTOP-4CMF04M0',
   database: 'DC_SYSTEM',
   connectionLimit: 10,
   options: {

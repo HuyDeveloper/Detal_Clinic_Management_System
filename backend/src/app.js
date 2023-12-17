@@ -1,6 +1,6 @@
 import express from "express";
 import  userRouter  from "./router/userRouter.js";
-
+import medicineRouter from "./router/medicine.routes.js"
 
 class App {
   constructor() {
@@ -22,6 +22,7 @@ class App {
     });
 
     this.app.use("/user", userRouter);
+    this.app.use("/medicine", medicineRouter);
   }
 }
 

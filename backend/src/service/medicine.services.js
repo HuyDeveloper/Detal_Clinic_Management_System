@@ -1,22 +1,36 @@
-import sql from "../db.js"
+import * as db from "../config/Database.js"
 
 export const getAllMedicine = async() => {
-    const result = await sql.query`SELECT * FROM MEDICINE`;
-    return result.recordset;
+    const query = { text: `SELECT * FROM MEDICINE`};
+    const result = await db.executeQuery(query)
+    return result[0];
 }
 
-export const addMedicine = async(medicine) => {    
-    sql.query("insert into MEDICINE (MEDICINE, MEDICINEPRICE, TYPEOFMEDICINE) values ('" + medicine.MEDICINE + "', " + medicine.MEDICINEPRICE + ", '" +  medicine.TYPEOFMEDICINE + "')")
+export const addMedicine = async(medicine) => {   
+    const query = { 
+        text: `insert into MEDICINE (MEDICINE, MEDICINEPRICE, TYPEOFMEDICINE) values (
+        '${medicine.MEDICINE}',
+        ${medicine.MEDICINEPRICE},
+        '${medicine.TYPEOFMEDICINE}')`
+    }; 
+    db.executeQuery(query)
     return 0;
 }
 
 export const deleteMedicine = async(name) => {
-    sql.query("delete from MEDICINE where MEDICINE = '" + name + "'");
+    const query = { text: `delete from MEDICINE 
+                    where MEDICINE = '${name}'`};
+                    db.executeQuery(query);
     return 0;
 }
 
 export const updateMedicine = async(medicine, name) => {
-    const query = "update MEDICINE SET MEDICINE = '" + medicine.MEDICINE + "', MEDICINEPRICE = " + medicine.MEDICINEPRICE + ", TYPEOFMEDICINE = '" + medicine.TYPEOFMEDICINE + "' where MEDICINE = '" + name + "'";
-    sql.query(query)
+    const query = { text: `Update MEDICINE  
+                SET MEDICINE = '${medicine.MEDICINE}',
+                MEDICINEPRICE = '${medicine.MEDICINEPRICE}', 
+                TYPEOFMEDICINE = '${medicine.TYPEOFMEDICINE}',
+                Where MEDICINE = '${name}'
+               `};
+    db.executeQuery(query)
     return 0;
 }
