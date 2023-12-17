@@ -4,6 +4,7 @@ import ListAppointment from "./pages/ListAppointment.jsx";
 import ListPatient from "./pages/ListPatient.jsx";
 import CreatePatientRecord from "./pages/CreatePatientRecord.jsx";
 import CreateTreatmentPlan from "./pages/CreateTreatmentPlan.jsx";
+import DetailAppointment from "./pages/DetailAppointment.jsx";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -12,6 +13,10 @@ const Router = createBrowserRouter([
   {
     path: "/all-appointments",
     element: <ListAppointment />,
+  },
+  {
+    path: "/all-appointments/detail",
+    element: <DetailAppointment />,
   },
   {
     path: "/all-patients",
