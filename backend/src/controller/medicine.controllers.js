@@ -1,4 +1,4 @@
-import {getAllMedicine, addMedicine, deleteMedicine, updateMedicine} from "../services/medicine.services.js"
+import {getAllMedicine, addMedicine, deleteMedicine, updateMedicine} from "../service/medicine.services.js"
 
 export const getAllMedicineController = async (req,res) => {
     const listMedicine = await getAllMedicine();

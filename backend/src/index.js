@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import medicineRouter from "./routes/medicine.routes.js"
+import medicineRouter from "./route/medicine.routes.js"
 const app = express();
 app.use(cors());
 app.get("/", (req, res) => {
