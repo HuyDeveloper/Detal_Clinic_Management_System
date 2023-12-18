@@ -80,4 +80,17 @@ export async function deleteAppointment(req, res) {
   }
 }
 
-export async function updateAppointment(req, res) {}
+export async function updateAppointment(req, res) {
+  try {
+    const { id } = req.params;
+    const result = await appointmentService.updateAppointment(id);
+    res.json({
+      message: "Success",
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}

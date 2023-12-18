@@ -47,3 +47,12 @@ export async function deleteAppointment(id) {
   const result = await db.executeQuery(query);
   return result;
 }
+
+export async function updateAppointment(id) {
+  const query = {
+    text: `update APPOINTMENT set APPSTATE = 1 where APPID = ${id}`,
+  };
+  const result = await db.executeQuery(query);
+  console.log(result);
+  return result;
+}
