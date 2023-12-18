@@ -6,9 +6,10 @@ const { ConnectionPool, Request } = pkg;
 const dbConfig = {
   user: "sa",
   password: "quochuy12",
-  server: "LAPTOP",
+  server: `DESKTOP-U2JUF8G\\LAPTOP`,
   database: "DC_SYSTEM",
   connectionLimit: 10,
+  port: 1434,
   options: {
     encrypt: true,
     trustServerCertificate: true,
@@ -23,7 +24,6 @@ export async function executeQuery(sql) {
   try {
     connection = await poolClient.connect();
     const request = new Request(connection);
-
     const result = await request.query(sql.text);
     return result.recordsets;
   } catch (error) {
