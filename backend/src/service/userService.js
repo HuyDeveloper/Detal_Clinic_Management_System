@@ -1,10 +1,26 @@
 import * as userDAL from '../DAL/userDAL.js';
+import * as db from "../config/Database.js"
 
 export async function getAlluser() {
       const user = await userDAL.getAlluser();
       return user;
 }
 
+export async function getAllDentist() {
+      const query = { 
+            text: `SELECT * from [user] join DENTIST on USERID = DENTISTID`
+        };
+      const result = await db.executeQuery(query)
+      return result[0];
+}
+
+export async function getAllStaff() {
+      const query = { 
+            text: `SELECT * from [user] join STAFF on USERID = STAFFID`
+        };
+      const result = await db.executeQuery(query)
+      return result[0];
+}
 
 export async function getuserByUserName(username) {
       const user = await userDAL.getuserByUserName(username);

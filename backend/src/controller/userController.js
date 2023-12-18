@@ -13,6 +13,30 @@ export async function getAlluser(req, res) {
     }
 }
 
+export async function getAllDentist(req, res) {
+    try {
+        const dentist = await userService.getAllDentist();
+        res.status(201).json({ dentist });
+    } catch (error) {
+        res.status(500).json({
+            status: 'Created failed',
+            error: error.message
+        });
+    }
+}
+
+export async function getAllStaff(req, res) {
+    try {
+        const staff = await userService.getAllStaff();
+        res.status(201).json({ staff });
+    } catch (error) {
+        res.status(500).json({
+            status: 'Created failed',
+            error: error.message
+        });
+    }
+}
+
 export async function loginUser(req, res) {
     try {
        // const loginUser = req.loginUser;
