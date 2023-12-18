@@ -25,7 +25,6 @@ export async function executeQuery(sql) {
     const request = new Request(connection);
 
     const result = await request.query(sql.text);
-    console.log(result);
     return result.recordsets;
   } catch (error) {
     console.error("Error during query:", error);
