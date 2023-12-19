@@ -1,42 +1,165 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* TableComponent.css */
+.table-container {
+  width: 80%;
+  margin: auto;
+  overflow-x: auto;
+  height: 500px;
+  margin-top: 5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border-radius: 8px; /* Thêm border-radius cho bảng */
+  overflow: hidden; /* Đảm bảo không bị bo tròn ở ngoài */
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+tr {
+  &:hover {
+    background-color: #91bce4;
+  }
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gray-button {
+  background-color: #7d9095;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.red-button {
+  margin-left: 0.2rem;
+  -left: 2rem;
+  background-color: #d12b15;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Header.css */
+/* Header.css */
+.app-header {
+  background-color: #4446b7;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 30px;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: large;
+  font-weight: 700;
+}
+
+.nav-item:hover {
+  color: #4c90af; /* Màu khi hover */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #4446b7;
+  color: white;
+  font-size: large;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+  margin-right: 50px;
+}
+
+.dropbtn:hover {
+  color: #4c90af;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4446b7;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content .nav-item {
+  color: #ffffff;
+  padding: 12px 16px;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content .nav-item:hover {
+  background-color: #4446b7;
+  color: #4c90af;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.login-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #45a049; /* Màu khi hover */
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  width: 5%;
+  transition: transform 0.3s;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  transform: scale(1.1); /* Hiệu ứng khi hover */
 }
