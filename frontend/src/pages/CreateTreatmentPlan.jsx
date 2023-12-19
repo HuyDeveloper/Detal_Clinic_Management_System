@@ -1,5 +1,6 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import Header from "../components/Header";
+import axios from "axios";
 export default function CreateTreatmentPlan() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -8,6 +9,13 @@ export default function CreateTreatmentPlan() {
     gender: "",
     dob: "",
   });
+  const [dentist, setDentist] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3000/user/get-all-dentist").then((response) => {
+      setDentist(response.data.dentist);
+      console.log(response.data.dentist);
+    });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,6 +24,7 @@ export default function CreateTreatmentPlan() {
       [name]: value,
     });
   };
+  const [selectedDentist, setSelectedDentist] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +56,9 @@ export default function CreateTreatmentPlan() {
   const handleToothChange = (event) => {
     setSelectedTooth(event.target.value);
   };
-
+  const handleDentistChange = (event) => {
+    setSelectedDentist(event.target.value);
+  };
   // Event handler for Surface dropdown
   const handleSurfaceChange = (event) => {
     setSelectedSurface(event.target.value);
@@ -55,21 +66,26 @@ export default function CreateTreatmentPlan() {
 
   return (
     <div>
-      <h3>Select treatments:</h3>
-      <div className="form-container">
+      <Header />
+      <div
+        className="form-container"
+        style={{
+          marginTop: "3rem",
+        }}
+      >
+        <h3>Create treatment plan:</h3>
         <form onSubmit={handleSubmit}>
-          <label>
-            Dentist:
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-            >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+          <div>
+            <label htmlFor="dentist">Dentist:</label>
+            <select id="dentist" name="dentist" onChange={handleDentistChange}>
+              <option value="">Select dentist</option>
+              {dentist.map((b) => (
+                <option key={b.DENTISTID} value={b.DENTISTID}>
+                  {b.FULLNAME}
+                </option>
+              ))}
             </select>
-          </label>
+          </div>
           <label>
             Re-examination time:
             <input
@@ -88,7 +104,7 @@ export default function CreateTreatmentPlan() {
               onChange={handleChange}
             />
           </label>
-          <button type="submit">Submit</button>
+
           <div>
             {initialOptions.map((option) => (
               <label key={option}>
@@ -138,6 +154,7 @@ export default function CreateTreatmentPlan() {
               Selected Surface: {selectedSurface}
             </p>
           </div>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>

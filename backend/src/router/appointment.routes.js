@@ -17,8 +17,10 @@ router.get(
   appointmentController.searchAppointmentByDentalClinic
 );
 
+//get all appointment
+router.get("/all", appointmentController.getAllAppointment);
 //Delete appointment
 router.delete("/:id", appointmentController.deleteAppointment);
 //Edit appointment
-router.patch("/:id", appointmentController.updateAppointment);
+router.put("/:id", appointmentController.updateAppointment);
 export default router;
