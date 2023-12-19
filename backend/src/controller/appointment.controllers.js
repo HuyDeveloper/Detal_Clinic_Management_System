@@ -83,7 +83,22 @@ export async function deleteAppointment(req, res) {
 export async function updateAppointment(req, res) {
   try {
     const { id } = req.params;
-    const result = await appointmentService.updateAppointment(id);
+    const appointment = req.body;
+    const result = await appointmentService.updateAppointment(id, apppointment);
+    res.json({
+      message: "Success",
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
+export async function getAllAppointment(req, res) {
+  try {
+    const result = await appointmentService.getAllAppointment();
     res.json({
       message: "Success",
       result,

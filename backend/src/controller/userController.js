@@ -190,3 +190,17 @@ export async function createPatient(req, res) {
     });
   }
 }
+
+export async function getAllBranch(req, res) {
+  try {
+    const branch = await userService.getAllBranch();
+    res.json({
+      branch,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Fail",
+      error: error.message,
+    });
+  }
+}

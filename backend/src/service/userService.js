@@ -86,3 +86,11 @@ export async function createPatient(payload) {
   const result = await db.executeQuery(query);
   return result[0];
 }
+
+export async function getAllBranch(payload) {
+  const query = {
+    text: `select * from DENTAL_CLINIC`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+}

@@ -11,6 +11,9 @@ router.put("/update", userController.updateUser);
 router.delete("/admin", userController.deleteAccountUser);
 router.put("/admin", userController.ManageAccountUser);
 
+router.get("/get-all-dentist", userController.getAllDentist);
+router.get("/get-all-staff", userController.getAllStaff);
+router.get("/get-all-branch", userController.getAllBranch);
 router.get("/get-all-patient", userController.getAllPatient);
-router.post("/create-patient", userController.createPatient);
+router.post("/create-patient", userController.createPatient); //create customer
 export default router;

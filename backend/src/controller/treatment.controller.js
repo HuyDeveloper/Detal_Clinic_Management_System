@@ -19,3 +19,15 @@ export async function addTreatment(req, res) {
     });
   }
 }
+
+export async function createInvoice(req, res) {
+  try {
+    const { mpid, paid, note } = req.body;
+    const temp = await treatmentService.createInvoice(mpid, paid, note);
+  } catch (error) {
+    res.json({
+      message: "Fail",
+      error: error.message,
+    });
+  }
+}

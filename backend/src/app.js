@@ -3,6 +3,7 @@ import userRouter from "./router/userRouter.js";
 import medicineRouter from "./router/medicine.routes.js";
 import appointmentRouter from "./router/appointment.routes.js";
 import treatmentRouter from "./router/treatment.routes.js";
+import cors from "cors";
 class App {
   constructor() {
     this.app = express();
@@ -21,7 +22,7 @@ class App {
       res.send("hiii");
       next();
     });
-
+    this.app.use(cors());
     this.app.use("/user", userRouter);
     this.app.use("/appointment", appointmentRouter);
     this.app.use("/medicine", medicineRouter);

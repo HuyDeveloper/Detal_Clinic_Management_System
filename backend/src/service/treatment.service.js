@@ -43,3 +43,14 @@ export async function addMedicine(stID, payload) {
   const result = await db.executeQuery(query);
   return result;
 }
+
+export async function createInvoice(mpid, paid, note) {
+  const query = {
+    text: `insert into INVOICE (MPID , PAID , NOTE) values (
+                ${mpid},
+                ${paid},
+                '${note}')`,
+  };
+  const result = await db.executeQuery(query);
+  return result;
+}

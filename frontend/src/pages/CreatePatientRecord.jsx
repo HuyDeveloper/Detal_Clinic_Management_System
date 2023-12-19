@@ -1,12 +1,15 @@
 // FormComponent.js
 import { useState } from "react";
 import "../style/Form.css";
-
+import Header from "../components/Header";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const CreatePatientRecord = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    fullName: "",
+    fullname: "",
     address: "",
-    phoneNumber: "",
+    phonenumber: "",
     gender: "",
     dob: "",
   });
@@ -22,59 +25,77 @@ const CreatePatientRecord = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Gửi dữ liệu hoặc thực hiện xử lý dữ liệu ở đây
-    console.log("Form data submitted:", formData);
+    axios
+      .post("http://localhost:3000/user/create-patient", formData)
+      .then((response) => {
+        console.log(response);
+        setFormData({});
+        alert("Create patient successfully!");
+        navigate("/all-patients");
+      });
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <label>
-          Full Name:
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Address:
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Phone Number:
-          <input
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Gender:
-          <select name="gender" value={formData.gender} onChange={handleChange}>
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </label>
-        <label>
-          Date of Birth:
-          <input
-            type="date"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <>
+      <Header />
+      <div>
+        <form className="container-edit" onSubmit={handleSubmit}>
+          <h3>Create Patient Record</h3>
+          <label>
+            Full Name:
+            <input
+              type="text"
+              name="fullname"
+              value={formData.fullname}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Address:
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Phone Number:
+            <input
+              type="tel"
+              name="phonenumber"
+              value={formData.phonenumber}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Gender:
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            >
+              <option value="">Select Gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </label>
+          <label>
+            Date of Birth:
+            <input
+              type="date"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+            />
+          </label>
+          <button className="green-button" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
