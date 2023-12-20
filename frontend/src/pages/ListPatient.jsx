@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 function convertDate(dateString) {
   const convertedDate = new Date(dateString);
   return convertedDate.toLocaleDateString("en-US"); // Chuyển đổi thành "MM/DD/YYYY"
@@ -12,6 +14,7 @@ function convertDate(dateString) {
 
 export default function ListPatient() {
   const navigate = useNavigate();
+  const { setCusIDSelectTreatment } = useContext(AuthContext);
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3000/user/get-all-patient").then((response) => {
@@ -28,7 +31,8 @@ export default function ListPatient() {
     navigate("/create-patient-records");
   };
 
-  const handlecreateTreatmentPlan = () => {
+  const handlecreateTreatmentPlan = (id) => {
+    setCusIDSelectTreatment(id);
     navigate("/all-patients/create-treatment-plan");
   };
   return (
@@ -76,10 +80,11 @@ export default function ListPatient() {
                 <td>{item.ADDRESS}</td>
                 <td>{item.DOB}</td>
                 <td>
+                  <button className="yellow-button">Detail</button>
                   <button className="gray-button">Edit</button>
                   <button
                     className="blue-button"
-                    onClick={handlecreateTreatmentPlan}
+                    onClick={() => handlecreateTreatmentPlan(item.CUSID)}
                   >
                     Create treatment plan
                   </button>

@@ -11,10 +11,7 @@ function convertDate(dateString) {
 }
 export default function ListAppointment() {
   const [data, setData] = useState([]);
-  const dateString = "2022-12-12T00:00:00.000Z";
-  const convertedDate = new Date(dateString);
   const navigate = useNavigate();
-  console.log(convertedDate);
   function convertTime(dateString) {
     const date = new Date(dateString);
     const hours = date.getUTCHours().toString().padStart(2, "0");
@@ -33,14 +30,12 @@ export default function ListAppointment() {
           APPTIME: convertTime(item.APPTIME),
           // Thêm các trường chuyển đổi khác nếu cần
         }));
-
-        console.log(convertedData);
         setData(convertedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error.message);
       });
-  }, [data]);
+  }, []);
 
   const deleteAppointment = (id) => {
     axios

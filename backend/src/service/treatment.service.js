@@ -15,12 +15,13 @@ export async function addTreatment(payload) {
   return result;
 }
 
-export async function addTooth(stID, payload) {
+export async function addTooth(stID, payload, tooth_price) {
   const query = {
-    text: `insert into SELECT_TOOTH (STID, TOOTHID, SURFACE ) values (
+    text: `insert into SELECT_TOOTH (STID, TOOTHID, SURFACE, TOOTHPRICE ) values (
             ${stID},
             ${payload.toothid},
-            '${payload.surface}')`,
+            '${payload.surface}',
+            ${tooth_price})`,
   };
   const result = await db.executeQuery(query);
   return result;
@@ -44,17 +45,64 @@ export async function addMedicine(stID, payload) {
   return result;
 }
 
-export async function createInvoice(mpid, paid, note) {
+export async function createInvoice(invoice) {
+  const {
+    mpid,
+    paid,
+    note,
+    totalToothPrice,
+    totalMedicinePrice,
+    stid,
+    totalprice,
+    change,
+  } = invoice;
   const query = {
-    text: `insert into INVOICE (MPID , PAID , NOTE) values (
+    text: `insert into INVOICE (MPID , TOTALTOOTHPRICE, TOTALPRICEMEDICINE , STID, TOTALPRICE, PAID,CHANGE, NOTE) values (
                 ${mpid},
+                ${totalToothPrice},
+                ${totalMedicinePrice},
+                ${stid},
+                ${totalprice},
                 ${paid},
+                ${change},
                 '${note}')`,
   };
   const result = await db.executeQuery(query);
   return result;
 }
 
+
+export async function getAllTreatments() {
+  const query = {
+    text: `select * from TREATMENT`,
+  };
+  const result = await db.executeQuery(query);
+  return result;
+}
+
+export async function getAllTooth() {
+  const query = {
+    text: `select * from TOOTH`,
+  };
+  const result = await db.executeQuery(query);
+  return result;
+}
+
+export async function getAllSurface() {
+  const query = {
+    text: `select * from SURFACE_POSITION`,
+  };
+  const result = await db.executeQuery(query);
+  return result;
+}
+
+export async function findToothPriceInTOOTH_PRICE(treid, toothid) {
+  const query = {
+    text: `select CURRENTPRICE from TOOTH_PRICE where TOOTHID = ${toothid} and TREATMENTID = ${treid}`,
+  };
+  const result = await db.executeQuery(query);
+  return result;
+}
 export const getSelectTreatmentByCusId = async(id) => {
   const query = { text: `SELECT * FROM SELECT_TREATMENT WHERE CUSID = ${id}`};
   const result = await db.executeQuery(query)
