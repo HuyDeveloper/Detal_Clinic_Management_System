@@ -1,3 +1,10 @@
+import Header from "../components/Header";
+
 export default function DetailAppointment() {
-  return <div>DetailAppointment</div>;
+  return (
+    <div>
+      <Header />
+      DetailAppointment
+    </div>
+  );
 }

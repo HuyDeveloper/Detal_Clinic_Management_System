@@ -31,7 +31,7 @@ export async function executeQuery(sql) {
     throw error;
   } finally {
     if (connection) {
-      connection.close();
+      await connection.close();
     }
   }
 }

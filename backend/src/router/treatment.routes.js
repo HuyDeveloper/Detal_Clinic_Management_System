@@ -1,8 +1,11 @@
 import {Router} from "express";
-import {getSelectTreatmentByCusId , getDetailSelectTreatmentById} from "../controller/treatment.controllers.js";
+import treatmentController from "../controller/treatment.controllers.js";
 
 const router = Router();
 
-router.get('/customer/:id', getSelectTreatmentByCusId);
-router.get('/:id', getDetailSelectTreatmentById);
+router.get('/customer/:id', treatmentController.getSelectTreatmentByCusId);
+router.get('/:id', treatmentController.getDetailSelectTreatmentById);
+router.post("/add", treatmentController.addTreatment);
+router.post("/createInvoice", treatmentController.createInvoice);
 
+export default router;
