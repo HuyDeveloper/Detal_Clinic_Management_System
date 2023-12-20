@@ -53,6 +53,18 @@ th {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 0.2rem;
+}
+.yellow-button {
+  margin-top: 1rem;
+  margin-left: 0.2rem;
+  -left: 2rem;
+  background-color: #f7b500;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .red-button {
@@ -194,4 +206,34 @@ nav {
 
 .logo:hover {
   transform: scale(1.1); /* Hiệu ứng khi hover */
+}
+
+/* CreateInvoice.css */
+
+.invoice-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.price-section {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.change-section {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #0066cc;
 }

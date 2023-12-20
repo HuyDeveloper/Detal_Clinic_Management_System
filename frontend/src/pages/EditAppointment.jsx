@@ -41,6 +41,10 @@ export default function EditAppointment() {
     setSelectedTime(event.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.prevent.default();
+  };
+
   return (
     <div>
       <Header />
@@ -92,7 +96,7 @@ export default function EditAppointment() {
             onChange={handleTimeChange}
           />
         </div>
-        <button className="green-button" type="submit">
+        <button className="green-button" type="submit" onClick={handleSubmit}>
           Submit
         </button>
       </form>

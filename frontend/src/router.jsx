@@ -6,6 +6,7 @@ import CreatePatientRecord from "./pages/CreatePatientRecord.jsx";
 import CreateTreatmentPlan from "./pages/CreateTreatmentPlan.jsx";
 import DetailAppointment from "./pages/DetailAppointment.jsx";
 import EditAppoitment from "./pages/EditAppointment.jsx";
+import CreateInvoice from "./pages/CreateInvoice.jsx";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ const Router = createBrowserRouter([
   {
     path: "/all-patients/create-treatment-plan",
     element: <CreateTreatmentPlan />,
+  },
+  {
+    path: "/create-invoice",
+    element: <CreateInvoice />,
   },
 ]);
 export default Router;
