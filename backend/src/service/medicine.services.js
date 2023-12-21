@@ -34,3 +34,4 @@ export const updateMedicine = async(medicine, name) => {
     db.executeQuery(query)
     return 0;
 }
+

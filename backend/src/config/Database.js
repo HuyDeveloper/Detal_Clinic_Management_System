@@ -5,11 +5,10 @@ const { ConnectionPool, Request } = pkg;
 // Thông tin kết nối đến cơ sở dữ liệu
 const dbConfig = {
   user: "sa",
-  password: "quochuy12",
-  server: `DESKTOP-U2JUF8G\\LAPTOP`,
+  password: "svcntt",
+  server: `LAPTOP-QH5VKUEG`,
   database: "DC_SYSTEM",
   connectionLimit: 10,
-  port: 1434,
   options: {
     encrypt: true,
     trustServerCertificate: true,
@@ -25,6 +24,7 @@ export async function executeQuery(sql) {
     connection = await poolClient.connect();
     const request = new Request(connection);
     const result = await request.query(sql.text);
+
     return result.recordsets;
   } catch (error) {
     console.error("Error during query:", error);

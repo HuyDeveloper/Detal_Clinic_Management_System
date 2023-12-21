@@ -2,7 +2,7 @@ import express from "express";
 import  userRouter  from "./router/userRouter.js";
 import medicineRouter from "./router/medicine.routes.js"
 import appointmentRouter from "./router/appointment.routes.js"
-
+import cheatSheetRoute from "./router/cheatSheetRoutes.js"
 class App {
   constructor() {
     this.app = express();
@@ -25,6 +25,7 @@ class App {
     this.app.use("/user", userRouter);
     this.app.use("/appointment", appointmentRouter);
     this.app.use("/medicine", medicineRouter);
+    this.app.use("/cheatsheet",cheatSheetRoute )
   }
 }
 

@@ -44,9 +44,6 @@ export async function loginUser(req, res) {
         const password = req.body.password 
         const [user] = await userService.getuserByUserName(username);
         const ischeckLogin = user.some((e)=>e.USERNAME===username && e.PASSWORD === password);
-        console.log(username,password,user);
-
-        console.log(ischeckLogin);
         if(!ischeckLogin){
             throw new Error("password incorrect"); 
         }

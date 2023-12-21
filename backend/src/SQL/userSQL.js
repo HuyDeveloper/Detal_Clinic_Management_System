@@ -74,30 +74,3 @@ export function ManageAccountUser(username, isactived){
 }
 
 
-
-
-
-
-//  export function getSurfaceBySpace(Spaceid:string){
-
-//     const sql = {
-//         text: `SELECT * FROM account WHERE  username =  '${Spaceid}' `,
-//         values: {
-//           param1: Spaceid,
-//         }
-//       };
-//     return sql;
-// }
-
-
-
-// export function InsertReportBySurface(id:number,surfaceId:number,address:string,long:number,lat:number,report_date:Date,content:string,email:string,phone:string,state:number) {
-//     const query =`INSERT INTO reports (id, surface, address, long, lat, report_date, content, email, phone, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-//                `;
-//     const value = [id, surfaceId, address, long, lat, report_date, content, email, phone, state];
-//     const queryObject = {
-//         text: query,
-//         value: value
-//     };
-//     return queryObject;
-// }
