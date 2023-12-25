@@ -1,0 +1,16 @@
+/* InvoiceBySTID.css */
+
+.invoice-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.invoice-info {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.invoice-info h2 {
+  color: #333;
+}

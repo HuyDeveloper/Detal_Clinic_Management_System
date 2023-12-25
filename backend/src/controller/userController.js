@@ -191,6 +191,22 @@ export async function createPatient(req, res) {
   }
 }
 
+export async function editPatient(req, res) {
+  try {
+    const patient = req.body;
+    const result = await userService.editPatient(patient);
+    res.json({
+      status: "Success",
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Fail",
+      error: error.message,
+    });
+  }
+}
+
 export async function getAllBranch(req, res) {
   try {
     const branch = await userService.getAllBranch();

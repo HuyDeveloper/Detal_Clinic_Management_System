@@ -12,7 +12,12 @@ export async function searchAppointmentByDentist() {
 
 export async function searchAppointmentByCustomer() {
   const query = {
-    text: `select *
+    text: `select 
+    A.APPID,
+    A.APPDATE,
+    A.APPTIME,
+    A.APPSTATE,
+    c.FULLNAME AS CUSTOMER_NAME
           from APPOINTMENT a
           join CUSTOMER c on a.CUSID = c.CUSID`,
   };
@@ -31,6 +36,7 @@ export async function searchAppointmentByDentalClinic() {
 }
 
 export async function searchAppointmentByDate(date) {
+  console.log(date);
   const query = {
     text: `select *
           from APPOINTMENT 
@@ -76,4 +82,24 @@ export async function getAllAppointment() {
   };
   const result = await db.executeQuery(query);
   return result[0];
+}
+
+export async function getAppointmentById(id) {
+  const query = {
+    text: `select *
+          from APPOINTMENT 
+          where APPID = ${id}`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+}
+
+export async function editAppointment(appointment) {
+  console.log(appointment);
+  const query = {
+    text: `UPDATE APPOINTMENT SET APPSTATE = '${appointment.state}', ROOM = '${appointment.room}', BRANCH = ${appointment.branch}, DENID = '${appointment.dentist}', APPDATE = '${appointment.date}', APPTIME = '${appointment.time}' WHERE APPID = ${appointment.appid}`,
+  };
+  const result = await db.executeQuery(query);
+  console.log(result);
+  return result;
 }
