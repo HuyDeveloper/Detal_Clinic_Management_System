@@ -71,7 +71,6 @@ export async function createInvoice(invoice) {
   return result;
 }
 
-
 export async function getAllTreatments() {
   const query = {
     text: `select * from TREATMENT`,
@@ -103,18 +102,42 @@ export async function findToothPriceInTOOTH_PRICE(treid, toothid) {
   const result = await db.executeQuery(query);
   return result;
 }
-export const getSelectTreatmentByCusId = async(id) => {
-  const query = { text: `SELECT * FROM SELECT_TREATMENT WHERE CUSID = ${id}`};
-  const result = await db.executeQuery(query)
+export const getSelectTreatmentByCusId = async (id) => {
+  const query = {
+    text: `SELECT * FROM SELECT_TREATMENT t1 join TREATMENT t2 on t1.TREID = t2.TREATMENTID  WHERE CUSID = ${id}`,
+  };
+  const result = await db.executeQuery(query);
   return result[0];
-}
+};
 
-export const getDetailSelectTreatmentById = async(id) => {
-  const query = { text: `SELECT * 
+export const getDetailSelectTreatmentById = async (id) => {
+  const query = {
+    text: `SELECT * 
   FROM SELECT_TREATMENT se
   join CUSTOMER c on c.CUSID = se.CUSID
   join TREATMENT t on t.TREATMENTID = se.TREID
-  WHERE se.STID = ${id}`};
-  const result = await db.executeQuery(query)
+  WHERE se.STID = ${id}`,
+  };
+  const result = await db.executeQuery(query);
   return result[0];
-}
+};
+
+export const getDetailProblemById = async (id) => {
+  const query = {
+    text: `SELECT * 
+  FROM DENTAL_PROBLEM d
+  WHERE d.CUSID = ${id}`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+};
+export const getInvoiceByStid = async (id) => {
+  const query = {
+    text: `SELECT * 
+  FROM INVOICE i
+  join MODE_PAYMENT m on m.MPID = i.MPID
+  WHERE i.STID = ${id}`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+};

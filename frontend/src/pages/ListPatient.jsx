@@ -14,6 +14,7 @@ function convertDate(dateString) {
 
 export default function ListPatient() {
   const navigate = useNavigate();
+
   const { setCusIDSelectTreatment } = useContext(AuthContext);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -29,6 +30,14 @@ export default function ListPatient() {
   }, []);
   const handleClick = () => {
     navigate("/create-patient-records");
+  };
+  const handleEdit = (id) => {
+    setCusIDSelectTreatment(id);
+    navigate("/all-patients/edit");
+  };
+  const handleDetail = (id) => {
+    setCusIDSelectTreatment(id);
+    navigate("/all-patients/detail");
   };
 
   const handlecreateTreatmentPlan = (id) => {
@@ -80,8 +89,18 @@ export default function ListPatient() {
                 <td>{item.ADDRESS}</td>
                 <td>{item.DOB}</td>
                 <td>
-                  <button className="yellow-button">Detail</button>
-                  <button className="gray-button">Edit</button>
+                  <button
+                    className="yellow-button"
+                    onClick={() => handleDetail(item.CUSID)}
+                  >
+                    Detail
+                  </button>
+                  <button
+                    className="gray-button"
+                    onClick={() => handleEdit(item.CUSID)}
+                  >
+                    Edit
+                  </button>
                   <button
                     className="blue-button"
                     onClick={() => handlecreateTreatmentPlan(item.CUSID)}

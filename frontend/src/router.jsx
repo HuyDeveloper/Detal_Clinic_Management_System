@@ -7,6 +7,9 @@ import CreateTreatmentPlan from "./pages/CreateTreatmentPlan.jsx";
 import DetailAppointment from "./pages/DetailAppointment.jsx";
 import EditAppoitment from "./pages/EditAppointment.jsx";
 import CreateInvoice from "./pages/CreateInvoice.jsx";
+import EditPatitent from "./pages/EditPatitent.jsx";
+import DetailPatient from "./pages/DetailPatient.jsx";
+import InvoiceBySTID from "./pages/InvoiceBySTID.jsx";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +30,18 @@ const Router = createBrowserRouter([
   {
     path: "/all-patients",
     element: <ListPatient />,
+  },
+  {
+    path: "/all-patients/edit",
+    element: <EditPatitent />,
+  },
+  {
+    path: "/all-patients/detail",
+    element: <DetailPatient />,
+  },
+  {
+    path: "/detail-invoice",
+    element: <InvoiceBySTID />,
   },
   {
     path: "/create-patient-records",

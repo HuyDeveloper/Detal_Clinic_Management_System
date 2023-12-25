@@ -18,9 +18,11 @@ export default function CreateTreatmentPlan() {
     axios.get("http://localhost:3000/user/get-all-dentist").then((response) => {
       setDentist(response.data.dentist);
     });
-    axios.get("http://localhost:3000/treatment/all").then((response) => {
-      setOptions(response.data.treatments[0]);
-    });
+    axios
+      .get("http://localhost:3000/treatment/get-all-treatment")
+      .then((response) => {
+        setOptions(response.data.treatments[0]);
+      });
     axios.get("http://localhost:3000/medicine").then((response) => {
       setMedicine(response.data.listMedicine);
     });

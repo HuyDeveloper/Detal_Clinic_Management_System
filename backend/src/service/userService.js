@@ -94,3 +94,18 @@ export async function getAllBranch(payload) {
   const result = await db.executeQuery(query);
   return result[0];
 }
+
+export async function editPatient(patient) {
+  console.log(patient);
+  const query = {
+    text: `UPDATE CUSTOMER
+    SET FULLNAME = '${patient.fullname}',
+    ADDRESS = '${patient.address}',
+    PHONENUMBER = '${patient.phonenumber}',
+    GENDER = '${patient.gender}',
+    DOB = '${patient.dob}'
+    WHERE CUSID = '${patient.cusid}'`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+}

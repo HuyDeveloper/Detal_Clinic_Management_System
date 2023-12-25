@@ -93,26 +93,52 @@ export async function getAllSurface(req, res) {
 
 export async function getSelectTreatmentByCusId(req, res) {
   try {
-      const id = req.params.id;
-      const data = await treatmentService.getSelectTreatmentByCusId(id);
-      res.send(data);
+    const id = req.params.id;
+    console.log(id);
+    const data = await treatmentService.getSelectTreatmentByCusId(id);
+    res.send(data);
   } catch (error) {
-      res.status(500).json({
-          status: 'Created failed',
-          error: error.message
-      });
+    res.status(500).json({
+      status: "Created failed",
+      error: error.message,
+    });
   }
 }
 
 export async function getDetailSelectTreatmentById(req, res) {
   try {
-      const id = req.params.id;
-      const data = await treatmentService.getDetailSelectTreatmentById(id);
-      res.send(data);
+    const id = req.params.id;
+    const data = await treatmentService.getDetailSelectTreatmentById(id);
+    res.send(data);
   } catch (error) {
-      res.status(500).json({
-          status: 'Created failed',
-          error: error.message
-      });
+    res.status(500).json({
+      status: "Created failed",
+      error: error.message,
+    });
+  }
+}
+export async function getDetailProblemById(req, res) {
+  try {
+    const id = req.params.id;
+    const data = await treatmentService.getDetailProblemById(id);
+    res.send(data);
+  } catch (error) {
+    res.status(500).json({
+      status: "Created failed",
+      error: error.message,
+    });
+  }
+}
+
+export async function getInvoiceByStid(req, res) {
+  try {
+    const id = req.params.id;
+    const data = await treatmentService.getInvoiceByStid(id);
+    res.send(data);
+  } catch (error) {
+    res.status(500).json({
+      status: "Created failed",
+      error: error.message,
+    });
   }
 }

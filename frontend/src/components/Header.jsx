@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div style={{ backgroundColor: "#4446b7" }}>
       <header className="app-header">
-        <img className="logo" src="./logo.png" onClick={handleHome} />
+        <img className="logo" src="../public/logo.png" onClick={handleHome} />
         <div className="nav-left">
           <div className="nav-item" onClick={handleAppointment}>
             Appointments
