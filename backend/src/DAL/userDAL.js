@@ -17,6 +17,13 @@ export async function getuserByUserName(username) {
     return user;
 }
 
+
+export async function getuserByUserInfoName(username) {
+   const querygetuserByUserInfoName = userSQL.getuserByUserInfoName(username);
+   const user = await db.executeQuery(querygetuserByUserInfoName);
+   return user;
+}
+
 export async function registerUser(username,password) {
    try {
 

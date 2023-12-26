@@ -20,6 +20,17 @@ export function getuserByUserName(username){
     return queryObject;
 }
 
+export function getuserByUserInfoName(username){
+    const query =`Select * 
+                From user_info
+                Where username = '${username}'
+               `;
+    const queryObject = {
+        text: query,
+    };
+    return queryObject;
+}
+
 
 
 export function addUser(username,password){

@@ -45,13 +45,11 @@ export async function loginUser(req, res) {
     const ischeckLogin = user.some(
       (e) => e.USERNAME === username && e.PASSWORD === password
     );
-    console.log(username, password, user);
-
-    console.log(ischeckLogin);
     if (!ischeckLogin) {
       throw new Error("password incorrect");
     }
-    res.status(201).json({ user });
+    const [user_info] = await userService.getuserByUserInfoName(username);
+    res.status(201).json({ user_info });
   } catch (error) {
     res.status(500).json({
       status: "Login Fail",

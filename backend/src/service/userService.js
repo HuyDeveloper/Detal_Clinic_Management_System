@@ -27,6 +27,11 @@ export async function getuserByUserName(username) {
   return user;
 }
 
+export async function getuserByUserInfoName(username) {
+  const user = await userDAL.getuserByUserInfoName(username);
+  return user;
+}
+
 export async function registerUser(username, password) {
   const registerUser = await userDAL.registerUser(username, password);
   return registerUser;
