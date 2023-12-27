@@ -7,6 +7,10 @@ router.get(
   "/searchByDentist",
   appointmentController.searchAppointmentByDentist
 );
+router.post(
+  "/addAppoint",
+  appointmentController.addAppointbyDentist
+);
 router.get(
   "/searchByCustomer",
   appointmentController.searchAppointmentByCustomer
