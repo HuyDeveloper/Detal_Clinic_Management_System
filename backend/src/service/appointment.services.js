@@ -72,7 +72,7 @@ export async function getAllAppointment() {
           join ROOM R on R.ROOMID = A.ROOM
           join CUSTOMER C on C.CUSID = A.CUSID
           join DENTAL_CLINIC D on D.DENTALID = A.BRANCH
-          join [USER] U on U.USERID = A.DENID AND U.USERTYPE = 'DENTIST'`,
+          join [USER_INFO] U on U.USERID = A.DENID AND U.USERTYPE = 'DENTIST'`,
   };
   const result = await db.executeQuery(query);
   return result[0];

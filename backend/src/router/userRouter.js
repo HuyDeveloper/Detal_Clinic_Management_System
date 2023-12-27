@@ -5,7 +5,7 @@ import Router from "express";
 const router = Router();
 
 router.get("/", userController.getAlluser);
-router.get("/login", userController.loginUser);
+router.post("/login", userController.loginUser);
 router.post("/register", userController.registerUser);
 router.put("/update", userController.updateUser);
 router.delete("/admin", userController.deleteAccountUser);
