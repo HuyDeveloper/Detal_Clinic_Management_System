@@ -110,6 +110,38 @@ export default function ListAppointment() {
           }));
           setData(convertedData);
         });
+    } else if (filterType === "dentist") {
+      axios
+        .get("http://localhost:3000/appointment/searchByDentist", {
+          params: {
+            name: filterValue,
+          },
+        })
+        .then((response) => {
+          const convertedData = response.data.map((item) => ({
+            ...item,
+            APPDATE: convertDate(item.APPDATE),
+            APPTIME: convertTime(item.APPTIME),
+            // Thêm các trường chuyển đổi khác nếu cần
+          }));
+          setData(convertedData);
+        });
+    } else if (filterType === "room") {
+      axios
+        .get("http://localhost:3000/appointment/searchByDentalClinic", {
+          params: {
+            name: filterValue,
+          },
+        })
+        .then((response) => {
+          const convertedData = response.data.map((item) => ({
+            ...item,
+            APPDATE: convertDate(item.APPDATE),
+            APPTIME: convertTime(item.APPTIME),
+            // Thêm các trường chuyển đổi khác nếu cần
+          }));
+          setData(convertedData);
+        });
     }
   };
   return (
@@ -126,6 +158,8 @@ export default function ListAppointment() {
           >
             <option value="name">Name</option>
             <option value="date">Date</option>
+            <option value="dentist">Dentist</option>
+            <option value="room">Room</option>
           </select>
         </div>
         {filterType === "date" && (
@@ -146,7 +180,9 @@ export default function ListAppointment() {
             />
           </div>
         )}
-        {filterType === "name" && (
+        {(filterType === "name" ||
+          filterType === "dentist" ||
+          filterType === "room") && (
           <div>
             <label htmlFor="filterValue">Filter Value:</label>
             <input

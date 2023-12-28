@@ -221,6 +221,7 @@ export async function getAllBranch(req, res) {
 
 export async function createStafforDentist(req, res) {
   try {
+    console.log(req.body);
     const fullname = req.body.fullname; // || req.loginUser.fullname;
     const nationalid = req.body.nationalid; // || req.loginUser.nationnalid;
     const address = req.body.address; // || req.loginUser.address;
@@ -228,10 +229,20 @@ export async function createStafforDentist(req, res) {
     const usertype = req.body.usertype; // || req.loginUser.usertype;
     const gender = req.body.gender;
     const username = req.body.username; // || req.loginUser.username;
-    const password = '123456'
+    const password = "123456";
 
-    const user = await userService.createStafforDentist(fullname,nationalid,address,phonenumber,gender,usertype, username, password);
+    const user = await userService.createStafforDentist(
+      fullname,
+      nationalid,
+      address,
+      phonenumber,
+      gender,
+      usertype,
+      username,
+      password
+    );
     res.json({
+      message: "Success",
       user,
     });
   } catch (error) {
