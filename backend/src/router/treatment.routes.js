@@ -13,4 +13,5 @@ router.get("/:id", treatmentController.getDetailSelectTreatmentById);
 router.get("/detalProblem/:id", treatmentController.getDetailProblemById);
 
 router.get("/invoiceByStid/:id", treatmentController.getInvoiceByStid);
+router.post("/updateSelectTreatment/:id", treatmentController.updateSelectTreatment);
 export default router;

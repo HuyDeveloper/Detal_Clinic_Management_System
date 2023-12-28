@@ -142,3 +142,23 @@ export async function getInvoiceByStid(req, res) {
     });
   }
 }
+
+export async function updateSelectTreatment(req, res) {
+  try {
+    const id = req.params.id;
+    const note = req.body.note;
+    const timeofreex = req.body.timeofreex
+    const treatmentstate = req.body.treatmentstate
+    const quantity = req.body.quantity
+    const surface = req.body.surface
+    const toothprice = req.body.toothprice;
+    
+    const data = await treatmentService.updateSelectTreatment(id, note, timeofreex, treatmentstate, quantity, surface, toothprice);
+    res.send(data);
+  } catch (error) {
+    res.status(500).json({
+      status: "Created failed",
+      error: error.message,
+    });
+  }
+}

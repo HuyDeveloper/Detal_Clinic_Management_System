@@ -141,3 +141,30 @@ export const getInvoiceByStid = async (id) => {
   const result = await db.executeQuery(query);
   return result[0];
 };
+
+export const updateSelectTreatment = async (id, note, timeofreex, treatmentstate, quantity, surface, toothprice) => {
+  const query1 = {
+    text: `UPDATE SELECT_TREATMENT SET
+           note = '${note}',
+           timeofreex = '${timeofreex}',
+           treatmentstate = '${treatmentstate}',
+           where stid = '${id}'`
+  };
+  await db.executeQuery(query1);
+
+  const query2 = {
+    text: `UPDATE DETAIL_MEDICINE SET
+           QUANTITY = '${quantity}',
+           where stid = '${id}'`
+  };
+  await db.executeQuery(query2);
+
+  const query3 = {
+    text: `UPDATE SELECT_TOOTH SET
+           surface = '${surface}',
+           toothprice = ${toothprice},
+           where stid = '${id}'`
+  };
+  const result = await db.executeQuery(query3);
+  return result[0];
+};
