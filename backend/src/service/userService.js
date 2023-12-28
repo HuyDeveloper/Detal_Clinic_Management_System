@@ -8,7 +8,7 @@ export async function getAlluser() {
 
 export async function getAllDentist() {
   const query = {
-    text: `SELECT * from [user] join DENTIST on USERID = DENTISTID`,
+    text: `SELECT * from user_info join DENTIST on USERID = DENTISTID`,
   };
   const result = await db.executeQuery(query);
   return result[0];
@@ -16,7 +16,7 @@ export async function getAllDentist() {
 
 export async function getAllStaff() {
   const query = {
-    text: `SELECT * from [user] join STAFF on USERID = STAFFID`,
+    text: `SELECT * from user_info join STAFF on USERID = STAFFID`,
   };
   const result = await db.executeQuery(query);
   return result[0];
@@ -120,7 +120,7 @@ export async function createStafforDentist(fullname,nationalid,address,phonenumb
                 values ('${username}','${password}','yes')
                `;
   await db.executeQuery(query1);
-  const query2 = `Insert Into user (userid,fullname,nationalid,address,phonenumber,gender,usertype,username)
+  const query2 = `Insert Into user_info (userid,fullname,nationalid,address,phonenumber,gender,usertype,username)
                 values ('${fullname}','${nationalid}','${address}','${phonenumber}','${gender}','${usertype}','${username}')`
   
   const result = await db.executeQuery(query2);
