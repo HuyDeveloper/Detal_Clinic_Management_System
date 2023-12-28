@@ -107,6 +107,9 @@ export default function ListPatient() {
                   >
                     Create treatment plan
                   </button>
+                  <button className="dental-button" onClick={handleClick}>
+                    <FontAwesomeIcon icon={faPlusSquare} />
+                  </button>
                 </td>
               </tr>
             ))}

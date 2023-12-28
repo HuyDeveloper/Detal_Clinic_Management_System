@@ -56,7 +56,7 @@ export default function CreateInvoice() {
       note: note,
       totalToothPrice: totalToothPrice,
       totalMedicinePrice: totalMedicinePrice,
-      stid: 58,
+      stid: sTreatmentID,
       totalprice: totalPrice,
       change: change,
     };

@@ -142,29 +142,46 @@ export const getInvoiceByStid = async (id) => {
   return result[0];
 };
 
-export const updateSelectTreatment = async (id, note, timeofreex, treatmentstate, quantity, surface, toothprice) => {
+export const updateSelectTreatment = async (
+  id,
+  note,
+  timeofreex,
+  medicine,
+  quantity,
+  surface
+) => {
+  console.log(id, note, timeofreex, medicine, quantity, surface);
   const query1 = {
     text: `UPDATE SELECT_TREATMENT SET
-           note = '${note}',
-           timeofreex = '${timeofreex}',
-           treatmentstate = '${treatmentstate}',
-           where stid = '${id}'`
+           NOTE = '${note}',
+           timeofreex = '${timeofreex}'
+           where stid = ${id}`,
   };
   await db.executeQuery(query1);
 
   const query2 = {
     text: `UPDATE DETAIL_MEDICINE SET
-           QUANTITY = '${quantity}',
-           where stid = '${id}'`
+          MEDICINE = '${medicine}',
+          QUANTITY = '${quantity}'
+          where stid = ${id}`,
   };
   await db.executeQuery(query2);
 
   const query3 = {
     text: `UPDATE SELECT_TOOTH SET
-           surface = '${surface}',
-           toothprice = ${toothprice},
-           where stid = '${id}'`
+           surface = '${surface}'
+           where stid = '${id}'`,
   };
   const result = await db.executeQuery(query3);
+  return result[0];
+};
+
+export const updateStateTreatment = async (id, state) => {
+  const query = {
+    text: `UPDATE SELECT_TREATMENT SET
+           TREATMENTSTATE = '${state}'
+           where stid = ${id}`,
+  };
+  const result = await db.executeQuery(query);
   return result[0];
 };

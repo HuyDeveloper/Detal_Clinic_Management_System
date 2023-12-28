@@ -10,8 +10,6 @@ export default function DetailPatient() {
   const [detalProblem, setDetalProblem] = useState([]);
 
   useEffect(() => {
-    console.log(cusid);
-
     axios
       .get(`http://localhost:3000/treatment/customer/${cusid}`)
       .then((response) => {
@@ -32,6 +30,35 @@ export default function DetailPatient() {
     setTreatmentID(id);
     navigate("/detail-invoice");
   };
+  const handleEdit = (id) => {
+    setTreatmentID(id);
+    navigate("/edit-treatment-plan");
+  };
+  const handleDone = (id) => {
+    axios
+      .patch(`http://localhost:3000/treatment/updateStateTreatment/${id}`, {
+        state: "DONE",
+      })
+      .then((res) => {
+        if (res.data.message === "Success") {
+          alert("Done treatment success");
+          navigate("/all-patients");
+        }
+      });
+  };
+
+  const handleCancle = (id) => {
+    axios
+      .patch(`http://localhost:3000/treatment/updateStateTreatment/${id}`, {
+        state: "CANCLED",
+      })
+      .then((res) => {
+        if (res.data.message === "Success") {
+          alert("Cancle treatment success");
+          navigate("/all-patients");
+        }
+      });
+  };
   return (
     <div>
       <Header />
@@ -48,15 +75,43 @@ export default function DetailPatient() {
 
             return (
               <div key={index} className={`treatment-item ${stateClass}`}>
-                <p>STID: {item.STID}</p>
-                <p>CREATEDDATE: {item.CREATEDDATE}</p>
-                <p>TITLE: {item.TITLE}</p>
-                <button
-                  onClick={() => handleClick(item.STID)}
-                  className="button-view-detail"
+                <div>
+                  <p>STID: {item.STID}</p>
+                  <p>CREATEDDATE: {item.CREATEDDATE}</p>
+                  <p>TITLE: {item.TITLE}</p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-around",
+                  }}
                 >
-                  View detail
-                </button>
+                  <button
+                    onClick={() => handleEdit(item.STID)}
+                    className="button-edit-treatment"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleClick(item.STID)}
+                    className="button-view-detail"
+                  >
+                    View detail
+                  </button>
+                  <button
+                    onClick={() => handleDone(item.STID)}
+                    className="button-done-treatment"
+                  >
+                    Done
+                  </button>
+                  <button
+                    onClick={() => handleCancle(item.STID)}
+                    className="button-cancle-treatment"
+                  >
+                    Canceled
+                  </button>
+                </div>
                 <hr />
               </div>
             );

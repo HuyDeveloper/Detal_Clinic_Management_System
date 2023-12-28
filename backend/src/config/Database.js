@@ -4,9 +4,9 @@ const { ConnectionPool, Request } = pkg;
 
 // Thông tin kết nối đến cơ sở dữ liệu
 const dbConfig = {
-  user: "thailv",
-  password: "123456",
-  server: `WINDOWS-PC\\USER01`,
+  user: "sa",
+  password: "quochuy12",
+  server: `DESKTOP-U2JUF8G\\LAPTOP`,
   database: "DC_SYSTEM",
   connectionLimit: 10,
   port: 1433,
