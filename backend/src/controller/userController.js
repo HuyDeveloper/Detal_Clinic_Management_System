@@ -218,3 +218,26 @@ export async function getAllBranch(req, res) {
     });
   }
 }
+
+export async function createStafforDentist(req, res) {
+  try {
+    const fullname = req.body.fullname; // || req.loginUser.fullname;
+    const nationalid = req.body.nationalid; // || req.loginUser.nationnalid;
+    const address = req.body.address; // || req.loginUser.address;
+    const phonenumber = req.body.phonenumber; // || req.loginUser.phonenumber;
+    const usertype = req.body.usertype; // || req.loginUser.usertype;
+    const gender = req.body.gender;
+    const username = req.body.username; // || req.loginUser.username;
+    const password = '123456'
+
+    const user = await userService.createStafforDentist(fullname,nationalid,address,phonenumber,gender,usertype, username, password);
+    res.json({
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Fail",
+      error: error.message,
+    });
+  }
+}

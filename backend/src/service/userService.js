@@ -101,7 +101,6 @@ export async function getAllBranch(payload) {
 }
 
 export async function editPatient(patient) {
-  console.log(patient);
   const query = {
     text: `UPDATE CUSTOMER
     SET FULLNAME = '${patient.fullname}',
@@ -112,5 +111,18 @@ export async function editPatient(patient) {
     WHERE CUSID = '${patient.cusid}'`,
   };
   const result = await db.executeQuery(query);
+  return result[0];
+}
+
+export async function createStafforDentist(fullname,nationalid,address,phonenumber,gender,usertype,username,password){
+  const query1 =`Insert  
+                Into account (username,password,isactived)
+                values ('${username}','${password}','yes')
+               `;
+  await db.executeQuery(query1);
+  const query2 = `Insert Into user (userid,fullname,nationalid,address,phonenumber,gender,usertype,username)
+                values ('${fullname}','${nationalid}','${address}','${phonenumber}','${gender}','${usertype}','${username}')`
+  
+  const result = await db.executeQuery(query2);
   return result[0];
 }

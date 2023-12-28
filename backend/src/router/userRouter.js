@@ -17,4 +17,5 @@ router.get("/get-all-branch", userController.getAllBranch);
 router.get("/get-all-patient", userController.getAllPatient);
 router.post("/create-patient", userController.createPatient); //create customer
 router.put("/edit-patient", userController.editPatient); //edit customer
+router.post("/create-staff-dentist", userController.createStafforDentist);
 export default router;
