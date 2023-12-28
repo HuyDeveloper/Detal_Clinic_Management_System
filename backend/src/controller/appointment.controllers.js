@@ -4,10 +4,10 @@ export async function searchAppointmentByDentist(req, res) {
   try {
     const filters = req.query;
     const data = await appointmentService.searchAppointmentByDentist();
-    console.log(data);
     const filteredUsers = data.filter((item) =>
-      item.FULLNAME.toLowerCase().includes(filters.name.toLowerCase())
+      item.USERNAME.toLowerCase().includes(filters.name.toLowerCase())
     );
+    console.log(filteredUsers);
     res.send(filteredUsers);
   } catch (error) {
     res.status(500).json({
@@ -22,11 +22,19 @@ export async function addAppointbyDentist(req, res) {
     const appdate = req.body.appdate;
     const apptime = req.body.apptime;
     const appstate = req.body.appstate;
-    const room  = req.body.room;
+    const room = req.body.room;
     const branch = req.body.branch;
-    const cusid  = req.body.cusid;
+    const cusid = req.body.cusid;
     const denid = req.body.denid;
-    const data = await appointmentService.addAppointbyDentist(appdate,apptime,appstate, room, branch, cusid, denid);
+    const data = await appointmentService.addAppointbyDentist(
+      appdate,
+      apptime,
+      appstate,
+      room,
+      branch,
+      cusid,
+      denid
+    );
     res.send("Success");
   } catch (error) {
     res.status(500).json({

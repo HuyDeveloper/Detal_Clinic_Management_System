@@ -114,15 +114,30 @@ export async function editPatient(patient) {
   return result[0];
 }
 
-export async function createStafforDentist(fullname,nationalid,address,phonenumber,gender,usertype,username,password){
-  const query1 =`Insert  
-                Into account (username,password,isactived)
-                values ('${username}','${password}','yes')
-               `;
-  await db.executeQuery(query1);
-  const query2 = `Insert Into user (userid,fullname,nationalid,address,phonenumber,gender,usertype,username)
-                values ('${fullname}','${nationalid}','${address}','${phonenumber}','${gender}','${usertype}','${username}')`
-  
+export async function createStafforDentist(
+  fullname,
+  nationalid,
+  address,
+  phonenumber,
+  gender,
+  usertype,
+  username,
+  password
+) {
+  console.log(username, password);
+  const query1 = {
+    text: `Insert  
+  Into ACCOUNT (username,password,isactived)
+  values ('${username}','${password}','yes')
+ `,
+  };
+  const t = await db.executeQuery(query1);
+  console.log(t);
+  const query2 = {
+    text: `Insert Into [USER] (fullname,nationalid,address,phonenumber,gender,usertype,username)
+  values ('${fullname}','${nationalid}','${address}','${phonenumber}','${gender}','${usertype}','${username}')`,
+  };
+
   const result = await db.executeQuery(query2);
   return result[0];
 }
