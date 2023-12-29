@@ -146,18 +146,40 @@ export async function getInvoiceByStid(req, res) {
 export async function updateSelectTreatment(req, res) {
   try {
     const id = req.params.id;
+    console.log(req.body);
     const note = req.body.note;
-    const timeofreex = req.body.timeofreex
-    const treatmentstate = req.body.treatmentstate
-    const quantity = req.body.quantity
-    const surface = req.body.surface
-    const toothprice = req.body.toothprice;
-    
-    const data = await treatmentService.updateSelectTreatment(id, note, timeofreex, treatmentstate, quantity, surface, toothprice);
-    res.send(data);
+    const timeofreex = req.body.timeofreex;
+    const quantity = req.body.quantity;
+    const surface = req.body.surface;
+    const medicine = req.body.medicine;
+
+    const data = await treatmentService.updateSelectTreatment(
+      id,
+      note,
+      timeofreex,
+      medicine,
+      quantity,
+      surface
+    );
+    res.json({ data, message: "Success" });
   } catch (error) {
     res.status(500).json({
       status: "Created failed",
+      error: error.message,
+    });
+  }
+}
+
+export async function updateStateTreatment(req, res) {
+  try {
+    const id = req.params.id;
+    const state = req.body.state;
+    console.log(state);
+    const data = await treatmentService.updateStateTreatment(id, state);
+    res.json({ data, message: "Success" });
+  } catch (error) {
+    res.status(500).json({
+      status: "Updated failed",
       error: error.message,
     });
   }

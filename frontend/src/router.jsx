@@ -11,6 +11,8 @@ import EditPatitent from "./pages/EditPatitent.jsx";
 import DetailPatient from "./pages/DetailPatient.jsx";
 import InvoiceBySTID from "./pages/InvoiceBySTID.jsx";
 import CreateUser from "./pages/CreateUser.jsx";
+import EditTreatmentPlan from "./pages/EditTreatmentPlan.jsx";
+import CreateDentalProblem from "./pages/CreateDentalProblem.jsx";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +47,10 @@ const Router = createBrowserRouter([
     element: <InvoiceBySTID />,
   },
   {
+    path: "/create-dental-problem",
+    element: <CreateDentalProblem />,
+  },
+  {
     path: "/create-patient-records",
     element: <CreatePatientRecord />,
   },
@@ -55,6 +61,10 @@ const Router = createBrowserRouter([
   {
     path: "/all-patients/create-treatment-plan",
     element: <CreateTreatmentPlan />,
+  },
+  {
+    path: "/edit-treatment-plan",
+    element: <EditTreatmentPlan />,
   },
   {
     path: "/create-invoice",

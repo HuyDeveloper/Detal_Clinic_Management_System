@@ -1,16 +1,34 @@
 /* InvoiceBySTID.css */
+.big-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.invoicecontainer {
+  width: 50%;
+  margin-top: 2rem;
+  padding: 10px;
 
-.invoice-container {
-  text-align: center;
-  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.plan-container {
+  margin-top: 2rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .invoice-info {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-top: 20px;
 }
 
 .invoice-info h2 {
-  color: #333;
 }

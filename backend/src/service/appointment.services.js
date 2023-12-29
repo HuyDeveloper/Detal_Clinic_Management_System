@@ -11,7 +11,7 @@ export async function searchAppointmentByDentist() {
     u.USERNAME
           from APPOINTMENT a
           join CUSTOMER c on a.CUSID = c.CUSID
-          join [USER] u on DENID = u.USERID`,
+          join USER_INFO u on DENID = u.USERID`,
   };
   const result = await db.executeQuery(query);
   return result[0];
@@ -109,7 +109,7 @@ export async function getAllAppointment() {
           join ROOM R on R.ROOMID = A.ROOM
           join CUSTOMER C on C.CUSID = A.CUSID
           join DENTAL_CLINIC D on D.DENTALID = A.BRANCH
-          join [USER] U on U.USERID = A.DENID AND U.USERTYPE = 'DENTIST'`,
+          join USER_INFO U on U.USERID = A.DENID AND U.USERTYPE = 'DENTIST'`,
   };
   const result = await db.executeQuery(query);
   return result[0];
@@ -131,7 +131,7 @@ export async function getAppointmentById(id) {
           join ROOM R on R.ROOMID = A.ROOM
           join CUSTOMER C on C.CUSID = A.CUSID
           join DENTAL_CLINIC D on D.DENTALID = A.BRANCH
-          join [USER] U on U.USERID = A.DENID AND U.USERTYPE = 'DENTIST'
+          join USER_INFO U on U.USERID = A.DENID AND U.USERTYPE = 'DENTIST'
           where APPID = ${id}`,
   };
   const result = await db.executeQuery(query);

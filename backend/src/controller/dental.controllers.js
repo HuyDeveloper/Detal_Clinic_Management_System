@@ -24,3 +24,15 @@ export async function getAllModePayment(req, res) {
     });
   }
 }
+
+export async function createDentalProblem(req, res) {
+  try {
+    const result = await dentalService.createDentalProblem(req.body);
+    res.json({ result, message: "Success" });
+  } catch (error) {
+    res.status(500).json({
+      status: "Created failed",
+      error: error.message,
+    });
+  }
+}
