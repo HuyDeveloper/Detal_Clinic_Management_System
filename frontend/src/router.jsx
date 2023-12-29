@@ -6,6 +6,7 @@ import CreatePatientRecord from "./pages/CreatePatientRecord.jsx";
 import CreateTreatmentPlan from "./pages/CreateTreatmentPlan.jsx";
 import DetailAppointment from "./pages/DetailAppointment.jsx";
 import EditAppoitment from "./pages/EditAppointment.jsx";
+
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import InforUser from "./pages/InforUser.jsx";
@@ -18,6 +19,15 @@ import DetailInvoice from "./pages/DetailInvoice.jsx";
 import ViewStaff from "./pages/ViewStaff.jsx";
 import ViewDentist from "./pages/ViewDentist.jsx";
 import SumAppBy from "./pages/SumAppBy.jsx";
+
+import CreateInvoice from "./pages/CreateInvoice.jsx";
+import EditPatitent from "./pages/EditPatitent.jsx";
+import DetailPatient from "./pages/DetailPatient.jsx";
+import InvoiceBySTID from "./pages/InvoiceBySTID.jsx";
+import CreateUser from "./pages/CreateUser.jsx";
+import EditTreatmentPlan from "./pages/EditTreatmentPlan.jsx";
+import CreateDentalProblem from "./pages/CreateDentalProblem.jsx";
+
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -40,14 +50,35 @@ const Router = createBrowserRouter([
     element: <ListPatient />,
   },
   {
+    path: "/all-patients/edit",
+    element: <EditPatitent />,
+  },
+  {
+    path: "/all-patients/detail",
+    element: <DetailPatient />,
+  },
+  {
+    path: "/detail-invoice",
+    element: <InvoiceBySTID />,
+  },
+  {
+    path: "/create-dental-problem",
+    element: <CreateDentalProblem />,
+  },
+  {
     path: "/create-patient-records",
     element: <CreatePatientRecord />,
+  },
+  {
+    path: "/create-staff-dentist",
+    element: <CreateUser />,
   },
   {
     path: "/all-patients/create-treatment-plan",
     element: <CreateTreatmentPlan />,
   },
   {
+
     path: "/login",
     element: <Login />,
   },
@@ -95,6 +126,13 @@ const Router = createBrowserRouter([
     path: "/sumappby",
     element: <SumAppBy />,
   },
-
+  {
+    path: "/edit-treatment-plan",
+    element: <EditTreatmentPlan />,
+  },
+  {
+    path: "/create-invoice",
+    element: <CreateInvoice />,
+  },
 ]);
 export default Router;

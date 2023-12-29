@@ -7,6 +7,17 @@ export const AuthProvider = ({ children }) => {
   const [isValid, setIsValid] = useState(false);
   const [invoiceID,setInvoiceID] = useState();
   const [medicine,setMedicine] = useState([]);
+  const [sTreatmentID, setSTreatmentID] = useState();
+  const [appid, setAppid] = useState();
+  const setCusIDSelectTreatment = (id) => {
+    setCusid(id);
+  };
+  const setTreatmentID = (id) => {
+    setSTreatmentID(id);
+  };
+  const setAppID = (id) => {
+    setAppid(id);
+  };
   const setInvoiceId=(id)=>{
     setInvoiceID(id)
   }
@@ -15,14 +26,21 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user,
+    <AuthContext.Provider value={{
+      user,
       setUser,
+      cusid,
       isValid,
       setIsValid,
       setInvoiceId,
       invoiceID,
       medicine,
       setMedicineId,
+      setCusIDSelectTreatment,
+      appid,
+      setAppID,
+      sTreatmentID,
+       setTreatmentID,
      }}>{children}</AuthContext.Provider>
   );
 };

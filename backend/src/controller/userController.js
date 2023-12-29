@@ -45,13 +45,11 @@ export async function loginUser(req, res) {
     const ischeckLogin = user.some(
       (e) => e.USERNAME === username && e.PASSWORD === password
     );
-    console.log(username, password, user);
-
-    console.log(ischeckLogin);
     if (!ischeckLogin) {
       throw new Error("password incorrect");
     }
-    res.status(201).json({ user });
+    const [user_info] = await userService.getuserByUserInfoName(username);
+    res.status(201).json({ user_info });
   } catch (error) {
     res.status(500).json({
       status: "Login Fail",
@@ -191,11 +189,61 @@ export async function createPatient(req, res) {
   }
 }
 
+export async function editPatient(req, res) {
+  try {
+    const patient = req.body;
+    const result = await userService.editPatient(patient);
+    res.json({
+      status: "Success",
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Fail",
+      error: error.message,
+    });
+  }
+}
+
 export async function getAllBranch(req, res) {
   try {
     const branch = await userService.getAllBranch();
     res.json({
       branch,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Fail",
+      error: error.message,
+    });
+  }
+}
+
+export async function createStafforDentist(req, res) {
+  try {
+    console.log(req.body);
+    const fullname = req.body.fullname; // || req.loginUser.fullname;
+    const nationalid = req.body.nationalid; // || req.loginUser.nationnalid;
+    const address = req.body.address; // || req.loginUser.address;
+    const phonenumber = req.body.phonenumber; // || req.loginUser.phonenumber;
+    const usertype = req.body.usertype; // || req.loginUser.usertype;
+    const gender = req.body.gender;
+    const username = req.body.username; // || req.loginUser.username;
+    const password = "123456";
+
+    const user = await userService.createStafforDentist(
+      fullname,
+      nationalid,
+      address,
+      phonenumber,
+      gender,
+      usertype,
+      username,
+      password
+    );
+    res.json({
+      message: "Success",
+      user,
     });
   } catch (error) {
     res.status(500).json({

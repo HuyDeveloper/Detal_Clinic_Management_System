@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 function convertDate(dateString) {
   const convertedDate = new Date(dateString);
   return convertedDate.toLocaleDateString("en-US"); // Chuyển đổi thành "MM/DD/YYYY"
@@ -12,6 +14,8 @@ function convertDate(dateString) {
 
 export default function ListPatient() {
   const navigate = useNavigate();
+
+  const { setCusIDSelectTreatment } = useContext(AuthContext);
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:3000/user/get-all-patient").then((response) => {
@@ -27,9 +31,22 @@ export default function ListPatient() {
   const handleClick = () => {
     navigate("/create-patient-records");
   };
+  const handleEdit = (id) => {
+    setCusIDSelectTreatment(id);
+    navigate("/all-patients/edit");
+  };
+  const handleDetail = (id) => {
+    setCusIDSelectTreatment(id);
+    navigate("/all-patients/detail");
+  };
 
-  const handlecreateTreatmentPlan = () => {
+  const handlecreateTreatmentPlan = (id) => {
+    setCusIDSelectTreatment(id);
     navigate("/all-patients/create-treatment-plan");
+  };
+  const handleDentalClick = (id) => {
+    setCusIDSelectTreatment(id);
+    navigate("/create-dental-problem");
   };
   return (
     <div>
@@ -76,12 +93,29 @@ export default function ListPatient() {
                 <td>{item.ADDRESS}</td>
                 <td>{item.DOB}</td>
                 <td>
-                  <button className="gray-button">Edit</button>
+                  <button
+                    className="yellow-button"
+                    onClick={() => handleDetail(item.CUSID)}
+                  >
+                    Detail
+                  </button>
+                  <button
+                    className="gray-button"
+                    onClick={() => handleEdit(item.CUSID)}
+                  >
+                    Edit
+                  </button>
                   <button
                     className="blue-button"
-                    onClick={handlecreateTreatmentPlan}
+                    onClick={() => handlecreateTreatmentPlan(item.CUSID)}
                   >
                     Create treatment plan
+                  </button>
+                  <button
+                    className="dental-button"
+                    onClick={() => handleDentalClick(item.CUSID)}
+                  >
+                    <FontAwesomeIcon icon={faPlusSquare} />
                   </button>
                 </td>
               </tr>

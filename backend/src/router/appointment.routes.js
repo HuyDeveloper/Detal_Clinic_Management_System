@@ -7,10 +7,15 @@ router.get(
   "/searchByDentist",
   appointmentController.searchAppointmentByDentist
 );
+router.post(
+  "/addAppoint",
+  appointmentController.addAppointbyDentist
+);
 router.get(
   "/searchByCustomer",
   appointmentController.searchAppointmentByCustomer
 );
+router.put("/edit-appointment", appointmentController.editAppointment);
 router.get("/searchByDate", appointmentController.searchAppointmentByDate);
 router.get(
   "/searchByDentalClinic",
@@ -23,4 +28,7 @@ router.get("/all", appointmentController.getAllAppointment);
 router.delete("/:id", appointmentController.deleteAppointment);
 //Edit appointment
 router.put("/:id", appointmentController.updateAppointment);
+
+//get detail appointment
+router.get("/detail/:id", appointmentController.getAppointmentById);
 export default router;
