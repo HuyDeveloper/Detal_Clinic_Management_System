@@ -44,6 +44,10 @@ export default function ListPatient() {
     setCusIDSelectTreatment(id);
     navigate("/all-patients/create-treatment-plan");
   };
+  const handleDentalClick = (id) => {
+    setCusIDSelectTreatment(id);
+    navigate("/create-dental-problem");
+  };
   return (
     <div>
       <Header />
@@ -107,7 +111,10 @@ export default function ListPatient() {
                   >
                     Create treatment plan
                   </button>
-                  <button className="dental-button" onClick={handleClick}>
+                  <button
+                    className="dental-button"
+                    onClick={() => handleDentalClick(item.CUSID)}
+                  >
                     <FontAwesomeIcon icon={faPlusSquare} />
                   </button>
                 </td>

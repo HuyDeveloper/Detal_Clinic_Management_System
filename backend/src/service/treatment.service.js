@@ -112,10 +112,21 @@ export const getSelectTreatmentByCusId = async (id) => {
 
 export const getDetailSelectTreatmentById = async (id) => {
   const query = {
-    text: `SELECT * 
+    text: `SELECT 
+  se.STID,
+  se.NOTE,
+  se.TIMEOFREEX,
+  se.TREATMENTSTATE,
+  c.FULLNAME,
+  c.PHONENUMBER,
+  t.TITLE,
+  d.FULLNAME as DENTISTNAME,
+  d.PHONENUMBER as DENTISTPHONE,
+  d.NATIONALID 
   FROM SELECT_TREATMENT se
   join CUSTOMER c on c.CUSID = se.CUSID
   join TREATMENT t on t.TREATMENTID = se.TREID
+  join USER_INFO d on d.USERID = se.DENID
   WHERE se.STID = ${id}`,
   };
   const result = await db.executeQuery(query);

@@ -11,3 +11,11 @@ export const getAllModePayment = async () => {
   const result = await db.executeQuery(query);
   return result[0];
 };
+
+export const createDentalProblem = async (data) => {
+  const query = {
+    text: `INSERT INTO DENTAL_PROBLEM (CUSID, DESCRIPTION) VALUES ('${data.cusId}', '${data.description}')`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+};
