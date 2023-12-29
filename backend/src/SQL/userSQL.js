@@ -53,7 +53,7 @@ export function updateUser(userid,fullname,nationalid,address ,phonenumber,gende
                 phonenumber = '${phonenumber}',
                 gender =   '${gender}' ,
                 usertype = '${usertype}'
-                Where userid = '${userid}' and username = '${username}'
+                Where userid = ${userid} and username = '${username}'
                `;
     const queryObject = {
         text: query,
