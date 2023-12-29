@@ -1,0 +1,52 @@
+
+.body {
+    
+    margin:auto;
+    width: 50%;
+    height: 70%;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 2px solid black;
+
+}
+.label-title {
+    margin: 5px 10px 5px -90px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.text{
+    margin: 20px 5px 10px 5px;
+    text-decoration: underline;
+}
+
+.login-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 20px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px;
+  }
+  
+  .login-btn:hover {
+    background-color: #45a049; /* Màu khi hover */
+  }
+  
+  .signup-btn {
+    margin: auto;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px;
+  }
+  
+  .login-btn:hover {
+    background-color: #45a049; /* Màu khi hover */
+  }
