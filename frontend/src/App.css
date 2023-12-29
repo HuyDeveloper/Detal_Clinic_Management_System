@@ -208,6 +208,21 @@ nav {
   background-color: #45a049; /* Màu khi hover */
 }
 
+.signup-btn {
+  margin-left: 10px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #45a049; /* Màu khi hover */
+}
+
 .logo {
   width: 5%;
   transition: transform 0.3s;
@@ -216,6 +231,13 @@ nav {
 .logo:hover {
   transform: scale(1.1); /* Hiệu ứng khi hover */
 }
+
+.name{
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 20px;
+  margin-top: 10px;
+
 
 /* CreateInvoice.css */
 
