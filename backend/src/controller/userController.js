@@ -115,8 +115,10 @@ export async function updateUser(req, res) {
 
 export async function deleteAccountUser(req, res) {
   try {
-    const username = req.body.username;
-    const usertype = req.body.usertype;
+    console.log(req.query);
+    
+    const username = req.query.username;
+    const usertype = req.query.usertype;
     if (!usertype || usertype !== "ADMIN") {
       throw new Error("Account not having permission");
     }

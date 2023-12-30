@@ -26,7 +26,6 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <h1>{user.name}</h1>
       <Banner />
       <Box sx={{ bgcolor: '#fce4ec', color: 'primary.main', p: 2, mb: 2, textAlign: "center" }}>
             <Container maxWidth="xl">

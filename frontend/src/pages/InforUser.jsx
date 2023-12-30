@@ -25,7 +25,7 @@ import Footer from "../components/Footer";
 
 export default function InforUser() {
     const navigate = useNavigate();
-    const {user}=useContext(AuthContext);
+    const {user,setUser}=useContext(AuthContext);
     const [name,setName] = useState("");
     const [address,setAddress] = useState("");
     const [phonenumber,setPhonenumber] = useState("");
@@ -57,17 +57,25 @@ export default function InforUser() {
       }
       axios
       .put("http://localhost:3000/user/update",{
-        USERID: user.USERID,
-        FULLNAME: name,
-        NATIONALID: nationalId,
-        ADDRESS: address,
-        PHONENUMBER: phonenumber,
-        GENDER: gender,
-        USERTYPE: user.USERTYPE,
-        USERNAME: user.USERNAME,
+        userid: user.USERID,
+        fullname: name,
+        nationalid: nationalId,
+        address: address,
+        phonenumber: phonenumber,
+        gender: gender,
+        usertype: user.USERTYPE,
+        username: user.USERNAME,
       })
       .then((response) => {
         console.log(response);
+        setUser({ USERID: user.USERID,
+          FULLNAME: name,
+          NATIONALID: nationalId,
+          ADDRESS: address,
+          PHONENUMBER: phonenumber,
+          GENDER: gender,
+          USERTYPE: user.USERTYPE,
+          USERNAME: user.USERNAME});
         alert("Update Info successfully!");
         navigate("/");
       });

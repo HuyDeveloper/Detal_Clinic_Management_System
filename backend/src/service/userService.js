@@ -80,8 +80,7 @@ export async function getAllPatient() {
 
 export async function createPatient(payload) {
   const query = {
-    text: `INSERT INTO CUSTOMER (USERNAME, FULLNAME, ADDRESS, PHONENUMBER, GENDER, DOB) VALUES (
-            'username',
+    text: `INSERT INTO CUSTOMER (FULLNAME, ADDRESS, PHONENUMBER, GENDER, DOB) VALUES (
             '${payload.fullname}',
             '${payload.address}',
             '${payload.phonenumber}',

@@ -67,6 +67,10 @@ export default function DetailAppointment() {
           <span className="value">{data.DENTIST_NAME}</span>
         </div>
         <div className="info-item">
+          <span className="label">DENTAL_CLINIC:</span>
+          <span className="value">{data.DENTAL_CLINIC_NAME}</span>
+        </div>
+        <div className="info-item">
           <span className="label">ROOM:</span>
           <span className="value">{data.ROOMID}</span>
         </div>

@@ -11,24 +11,37 @@ export default function EditPatitent() {
     fullname: "",
     address: "",
     phonenumber: "",
-    gender: "",
     dob: "",
   });
+  const [gender, setGender] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+
+    // Handle special case for the "gender" field
+    if (name === "gender") {
+      setFormData({
+        ...formData,
+        gender: value,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+
     axios
-      .put("http://localhost:3000/user/edit-patient", formData)
+      .put("http://localhost:3000/user/edit-patient", {
+        ...formData,
+        gender
+      })
       .then((response) => {
         if (response.data.status === "Success") {
           alert("Form data submitted");
@@ -73,14 +86,15 @@ export default function EditPatitent() {
             className="input-field"
           />
 
-          <label htmlFor="gender">Gender:</label>
+<label htmlFor="gender">Gender:</label>
           <select
             id="gender"
             name="gender"
-            value={formData.gender}
-            onChange={handleChange}
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
             className="input-field"
           >
+            <option value="">Select Gender</option>
             <option value="MALE">Male</option>
             <option value="FEMALE">Female</option>
             <option value="OTHER">Other</option>

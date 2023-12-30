@@ -202,14 +202,16 @@ nav {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+
 }
 
 .login-btn:hover {
   background-color: #45a049; /* Màu khi hover */
 }
 
-.signup-btn {
+.signupBtn {
   margin-left: 10px;
+  margin-right: 10px;
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
@@ -217,6 +219,7 @@ nav {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+
 }
 
 .login-btn:hover {
@@ -267,4 +270,4 @@ nav {
   margin-top: 15px;
   font-size: 18px;
   color: #0066cc;
-}
+}}

@@ -184,3 +184,36 @@ export async function updateStateTreatment(req, res) {
     });
   }
 }
+export async function addTreat(req, res) {
+  try {
+    const treatment = req.body;
+    
+    const addTreatment= await treatmentService.addTreat(treatment);
+    res.json({
+      message: "Success",
+      addTreatment,
+    });
+  } catch (error) {
+    res.json({
+      message: "Fail",
+      error: error.message,
+    });
+  }
+}
+export async function updateTreat(req,res){
+  try {
+    const treatment = req.body;
+    const id1 = req.query.id;
+    console.log(id1+"id:")
+    const updateTreatment= await treatmentService.updateTreat(treatment,id1);
+    res.json({
+      message: "Success",
+      updateTreatment,
+    });
+  } catch (error) {
+    res.json({
+      message: "Fail",
+      error: error.message,
+    });
+  }
+}
