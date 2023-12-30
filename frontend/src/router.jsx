@@ -27,7 +27,9 @@ import InvoiceBySTID from "./pages/InvoiceBySTID.jsx";
 import CreateUser from "./pages/CreateUser.jsx";
 import EditTreatmentPlan from "./pages/EditTreatmentPlan.jsx";
 import CreateDentalProblem from "./pages/CreateDentalProblem.jsx";
-
+import Treatment from "./pages/Treatment.jsx";
+import CreateTreatment from "./pages/CreateTreat.jsx";
+import EditTreat from "./pages/EditTreat.jsx";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -133,6 +135,18 @@ const Router = createBrowserRouter([
   {
     path: "/create-invoice",
     element: <CreateInvoice />,
+  },
+  {
+    path: "/treatment",
+    element: <Treatment />,
+  },
+  {
+    path: "/treatment/create",
+    element: <CreateTreatment />,
+  },
+  {
+    path: "/treatment/edit",
+    element: <EditTreat />,
   },
 ]);
 export default Router;

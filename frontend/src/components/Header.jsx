@@ -15,8 +15,9 @@ const Header = () => {
     navigate("/all-appointments");
   };
   const logout=()=>{
-    setUser({name:""});
+    setUser({});
     setIsValid(false);
+    localStorage.removeItem("user");
     navigate("/");
 
   };
@@ -47,7 +48,7 @@ const Header = () => {
             </button>
             <div className="dropdown-content">
               <div className="nav-item" onClick={()=> navigate("/medicine")}>Medicine</div>
-              <div className="nav-item">Treatment</div>
+              <div className="nav-item" onClick={()=> navigate("/treatment")}>Treatment</div>
               <div className="nav-item">Dental Clinic</div>
             </div>
           </div>
@@ -63,9 +64,9 @@ const Header = () => {
             </div>
           </div> :
            
-            <button className="login-btn" onClick={()=>navigate("/login")}>Log In</button>}
+            <button className="signupBtn" onClick={()=>navigate("/login")}>Log In</button>}
             { isValid ? <button className="login-btn" onClick={logout}> Logout </button> : 
-              <button className="signup-btn" onClick={()=>navigate("/signup")}>Sign Up</button>}
+              <button className="signupBtn" onClick={()=>navigate("/signup")}>Sign Up</button>}
         </div>
       </header>
     </div>

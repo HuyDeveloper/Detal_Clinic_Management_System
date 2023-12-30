@@ -1,7 +1,7 @@
 import { useEffect, useState,useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import "../App.css";
-import DateFilterComponent from "../components/DateFilterComponent";
+
 import Header from "../components/Header";
 import axios from "axios";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
@@ -37,6 +37,7 @@ export default function Medicine() {
       .then((response) => {
         console.log(response);
         setData(data.filter((item) => item.MEDICINE !== id));
+        alert("Delete Medicine successfully!");
       })
       .catch((error) => {
         console.error("Error deleting data:", error.message);

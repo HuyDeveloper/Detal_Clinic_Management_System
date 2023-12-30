@@ -5,15 +5,15 @@ import "../style/Form.css";
 import Header from "../components/Header";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const CreateMedicine = () => {
-  const {medicine}=useContext(AuthContext);
-  console.log("medicine");
-  console.log(medicine.MEDICINE);
+const EditTreat = () => {
+  const {treatment}=useContext(AuthContext);
+  console.log("treatment");
+  console.log(treatment);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    MEDICINE: "",
-    MEDICINEPRICE: "",
-    TYPEOFMEDICINE: "",
+    TITLE: "",
+    DESCRIPTION: "",
+
 
   });
 
@@ -25,7 +25,7 @@ const CreateMedicine = () => {
     });
   };
   const requestData = {
-    params: { name: medicine.MEDICINE },
+    params: { id: treatment.TREATMENTID },
     formData: formData, // Assuming formData is already defined
   };
 
@@ -33,15 +33,15 @@ const CreateMedicine = () => {
     e.preventDefault();
     // Gửi dữ liệu hoặc thực hiện xử lý dữ liệu ở đây
     axios
-    .put("http://localhost:3000/medicine", formData, {
-      params: { name: medicine.MEDICINE },
-      // Additional configuration options if needed
-    })
+      .put("http://localhost:3000/treatment/updateTreat",formData, {
+        params: { id: treatment.TREATMENTID },
+        // Additional configuration options if needed
+      })
       .then((response) => {
         console.log(response);
         setFormData({});
-        alert("Update Medicine successfully!");
-        navigate("/medicine");
+        alert("Update Treatment successfully!");
+        navigate("/treatment");
       });
   };
 
@@ -50,37 +50,28 @@ const CreateMedicine = () => {
       <Header />
       <div>
         <form className="container-edit" onSubmit={handleSubmit}>
-          <h3>Update Medicine </h3>
+          <h3>Update Treatment </h3>
           <label>
-            Name:
+            TITLE:
             <input
               type="text"
-              name="MEDICINE"
-              placeholder={medicine.MEDICINE}
-              value={formData.MEDICINE}
+              name="TITLE"
+              placeholder={treatment.TITLE}
+              value={formData.TITLE}
               onChange={handleChange}
             />
           </label>
           <label>
-            Price:
+          DESCRIPTION:
             <input
               type="text"
-              name="MEDICINEPRICE"
-              placeholder={medicine.MEDICINEPRICE}
-              value={formData.MEDICINEPRICE}
+              name="DESCRIPTION"
+              placeholder={treatment.DESCRIPTION}
+              value={formData.DESCRIPTION}
               onChange={handleChange}
             />
           </label>
-          <label>
-            Type:
-            <input
-              type="text"
-              name="TYPEOFMEDICINE"
-              placeholder={medicine.TYPEOFMEDICINE}
-              value={formData.TYPEOFMEDICINE}
-              onChange={handleChange}
-            />
-          </label>
+          
           
           <button className="green-button" type="submit">
             Submit
@@ -91,4 +82,4 @@ const CreateMedicine = () => {
   );
 };
 
-export default CreateMedicine;
+export default EditTreat;

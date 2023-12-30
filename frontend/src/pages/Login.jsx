@@ -49,6 +49,7 @@ const Login = () => {
             console.log(response.data.user_info[0].USERNAME);
             setIsValid(true);
             setUser(response.data.user_info[0]);
+            localStorage.setItem("user",JSON.stringify(response.data.user_info[0]));
               
             setIsSubmit(true)
                 // Invalid password
@@ -85,7 +86,7 @@ const Login = () => {
           <div className="label-title">
                 Username:
           </div>
-          <input
+          <input style={{width:"200px"}}
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -97,7 +98,7 @@ const Login = () => {
           <div className="label-title">
                 Password:
           </div>
-          <input
+          <input style={{width:"200px"}}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -105,7 +106,7 @@ const Login = () => {
           {renderErrorMessage("pass")}
         </label>
         <br />
-        <button type="submit" onClick={HandleLogin} className="login-btn">
+        <button type="submit" onClick={HandleLogin} className="login-btn" style={{marginLeft:"300px"}}>
           Login
         </button>
 

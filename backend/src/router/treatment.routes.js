@@ -21,4 +21,6 @@ router.patch(
   "/updateStateTreatment/:id",
   treatmentController.updateStateTreatment
 );
+router.post("/addTreat", treatmentController.addTreat);
+router.put("/updateTreat", treatmentController.updateTreat);
 export default router;

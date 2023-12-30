@@ -7,7 +7,6 @@ export async function searchAppointmentByDentist(req, res) {
     const filteredUsers = data.filter((item) =>
       item.USERNAME.toLowerCase().includes(filters.name.toLowerCase())
     );
-    console.log(filteredUsers);
     res.send(filteredUsers);
   } catch (error) {
     res.status(500).json({

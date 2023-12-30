@@ -31,11 +31,11 @@ export const updateMedicine = async (medicine, name) => {
     text: `Update MEDICINE  
                 SET MEDICINE = '${medicine.MEDICINE}',
                 MEDICINEPRICE = '${medicine.MEDICINEPRICE}', 
-                TYPEOFMEDICINE = '${medicine.TYPEOFMEDICINE}',
-                Where MEDICINE = '${name}'
+                TYPEOFMEDICINE = '${medicine.TYPEOFMEDICINE}'
+                Where MEDICINE ='${name}'
                `,
   };
-  db.executeQuery(query);
+  await db.executeQuery(query);
   return 0;
 };
 

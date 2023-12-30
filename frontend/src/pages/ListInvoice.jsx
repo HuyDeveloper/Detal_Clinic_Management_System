@@ -1,6 +1,5 @@
 import { useEffect, useState,useContext } from "react";
 import "../App.css";
-import DateFilterComponent from "../components/DateFilterComponent";
 import Header from "../components/Header";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
@@ -54,7 +53,7 @@ export default function ListInvoice() {
     <div>
       <Header />
       <h3>Appointments</h3>
-      <DateFilterComponent />
+      
       <div className="table-container">
         <table>
           <thead>

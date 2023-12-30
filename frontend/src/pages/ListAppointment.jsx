@@ -159,7 +159,7 @@ export default function ListAppointment() {
             <option value="name">Name</option>
             <option value="date">Date</option>
             <option value="dentist">Dentist</option>
-            <option value="room">Room</option>
+            <option value="room">Dental Clinic</option>
           </select>
         </div>
         {filterType === "date" && (

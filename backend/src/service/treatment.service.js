@@ -196,3 +196,26 @@ export const updateStateTreatment = async (id, state) => {
   const result = await db.executeQuery(query);
   return result[0];
 };
+export async function addTreat(payload) {
+  console.log(payload);
+  const query = {
+    text: `insert into TREATMENT (TITLE, DESCRIPTION) values (
+            '${payload.TITLE}',
+            '${payload.DESCRIPTION}')`,
+  };
+  const result = await db.executeQuery(query);
+  return result;
+};
+export async function updateTreat(payload,id) {
+  const idTr=parseInt(id);
+  console.log(payload);
+  console.log(id);
+  const query = {
+    text: `UPDATE TREATMENT SET
+           TITLE = '${payload.TITLE}',
+           DESCRIPTION = '${payload.DESCRIPTION}'
+           WHERE TREATMENTID = '${id}'`,
+  };
+  const result = await db.executeQuery(query);
+  return result[0];
+};
